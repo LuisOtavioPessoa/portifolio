@@ -1,0 +1,367 @@
+@import "tailwindcss";
+
+@theme inline {
+
+  --font-altone: 'Altone Trial', sans-serif;
+  --font-chocolates: 'TT Chocolates Trl', sans-serif;
+  --font-creato: 'Creato Display', sans-serif;
+
+  --color-primary-1: #060625;
+  --color-primary-2: #272742;
+  --color-primary-3: #11294E;
+  --color-primary-4: #0D316B;
+  --color-primary-5: #124D98;
+  --color-primary-6: #3B76BB;
+}
+
+.font-altone {
+  font-family: var(--font-altone);
+}
+.font-chocolates {
+  font-family: var(--font-chocolates);
+}
+.font-creato{
+  font-family: var(--font-creato);
+}
+
+
+@layer base {
+    /* FONT ALTONE TRIAL */
+  @font-face {
+    font-family: 'Altone Trial';
+    font-style: normal;
+    font-weight: 300;
+    font-stretch: 100%;
+    font-display: swap;
+    src: url(/fonts/altone-trial/AltoneTrial-Regular.ttf) format(truetype);
+  }
+
+    @font-face {
+    font-family: 'Altone Trial';
+    font-style: italic;
+    font-weight: 300;
+    font-stretch: 100%;
+    font-display: swap;
+    src: url(/fonts/altone-trial/AltoneTrial-Regular.ttf) format(truetype);
+  }
+
+    @font-face {
+    font-family: 'Altone Trial';
+    font-style: normal;
+    font-weight: 400;
+    font-stretch: 100%;
+    font-display: swap;
+    src: url(/fonts/altone-trial/AltoneTrial-Regular.ttf) format(truetype);
+  }
+
+    @font-face {
+    font-family: 'Altone Trial';
+    font-style: italic;
+    font-weight: 400;
+    font-stretch: 100%;
+    font-display: swap;
+    src: url(/fonts/altone-trial/AltoneTrial-Regular.ttf) format(truetype);
+  }
+
+      @font-face {
+    font-family: 'Altone Trial';
+    font-style: normal;
+    font-weight: 500;
+    font-stretch: 100%;
+    font-display: swap;
+    src: url(/fonts/altone-trial/AltoneTrial-Regular.ttf) format(truetype);
+  }
+
+    @font-face {
+    font-family: 'Altone Trial';
+    font-style: italic;
+    font-weight: 500;
+    font-stretch: 100%;
+    font-display: swap;
+    src: url(/fonts/altone-trial/AltoneTrial-Regular.ttf) format(truetype);
+  }
+
+    @font-face {
+    font-family: 'Altone Trial';
+    font-style: normal;
+    font-weight: 600;
+    font-stretch: 100%;
+    font-display: swap;
+    src: url(/fonts/altone-trial/AltoneTrial-Regular.ttf) format(truetype);
+  }
+
+    @font-face {
+    font-family: 'Altone Trial';
+    font-style: italic;
+    font-weight: 600;
+    font-stretch: 100%;
+    font-display: swap;
+    src: url(/fonts/altone-trial/AltoneTrial-Regular.ttf) format(truetype);
+  }
+
+    @font-face {
+    font-family: 'Altone Trial';
+    font-style: normal;
+    font-weight: 700;
+    font-stretch: 100%;
+    font-display: swap;
+    src: url(/fonts/altone-trial/AltoneTrial-Regular.ttf) format(truetype);
+  }
+
+    @font-face {
+    font-family: 'Altone Trial';
+    font-style: italic;
+    font-weight: 700;
+    font-stretch: 100%;
+    font-display: swap;
+    src: url(/fonts/altone-trial/AltoneTrial-Regular.ttf) format(truetype);
+  }
+
+    @font-face {
+    font-family: 'Altone Trial';
+    font-style: normal;
+    font-weight: 800;
+    font-stretch: 100%;
+    font-display: swap;
+    src: url(/fonts/altone-trial/AltoneTrial-Regular.ttf) format(truetype);
+  }
+
+    @font-face {
+    font-family: 'Altone Trial';
+    font-style: italic;
+    font-weight: 800;
+    font-stretch: 100%;
+    font-display: swap;
+    src: url(/fonts/altone-trial/AltoneTrial-Regular.ttf) format(truetype);
+  }
+
+  /* TT Chocolates */
+
+  @font-face {
+    font-family: 'TT Chocolates Trl';
+    font-style: normal;
+    font-weight: 100;
+    font-display: swap;
+    src: url(/fonts/tt-chocolates/TTChocolates-Regular.ttf) format(truetype);
+  }
+
+  @font-face {
+    font-family: 'TT Chocolates Trl';
+    font-style: italic;
+    font-weight: 100;
+    font-display: swap;
+    src: url(/fonts/tt-chocolates/TTChocolates-Italic.ttf) format(truetype);
+  }
+
+  @font-face {
+    font-family: 'TT Chocolates Trl';
+    font-style: normal;
+    font-weight: 200;
+    font-display: swap;
+    src: url(/fonts/tt-chocolates/TTChocolates-Regular.ttf) format(truetype);
+  }
+
+  @font-face {
+    font-family: 'TT Chocolates Trl';
+    font-style: italic;
+    font-weight: 200;
+    font-display: swap;
+    src: url(/fonts/tt-chocolates/TTChocolates-Italic.ttf) format(truetype);
+  }
+
+  @font-face {
+    font-family: 'TT Chocolates Trl';
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url(/fonts/tt-chocolates/TTChocolates-Regular.ttf) format(truetype);
+  }
+
+  @font-face {
+    font-family: 'TT Chocolates Trl';
+    font-style: italic;
+    font-weight: 300;
+    font-display: swap;
+    src: url(/fonts/tt-chocolates/TTChocolates-Italic.ttf) format(truetype);
+  }
+
+  @font-face {
+    font-family: 'TT Chocolates Trl';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(/fonts/tt-chocolates/TTChocolates-Regular.ttf) format(truetype);
+  }
+
+  @font-face {
+    font-family: 'TT Chocolates Trl';
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url(/fonts/tt-chocolates/TTChocolates-Italic.ttf) format(truetype);
+  }
+
+  @font-face {
+    font-family: 'TT Chocolates Trl';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url(/fonts/tt-chocolates/TTChocolates-Regular.ttf) format(truetype);
+  }
+
+  @font-face {
+    font-family: 'TT Chocolates Trl';
+    font-style: italic;
+    font-weight: 500;
+    font-display: swap;
+    src: url(/fonts/tt-chocolates/TTChocolates-Italic.ttf) format(truetype);
+  }
+
+  @font-face {
+    font-family: 'TT Chocolates Trl';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url(/fonts/tt-chocolates/TTChocolates-Regular.ttf) format(truetype);
+  }
+
+  @font-face {
+    font-family: 'TT Chocolates Trl';
+    font-style: italic;
+    font-weight: 600;
+    font-display: swap;
+    src: url(/fonts/tt-chocolates/TTChocolates-Italic.ttf) format(truetype);
+  }
+
+  @font-face {
+    font-family: 'TT Chocolates Trl';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url(/fonts/tt-chocolates/TTChocolates-Regular.ttf) format(truetype);
+  }
+
+  @font-face {
+    font-family: 'TT Chocolates Trl';
+    font-style: italic;
+    font-weight: 700;
+    font-display: swap;
+    src: url(/fonts/tt-chocolates/TTChocolates-Italic.ttf) format(truetype);
+  }
+
+  /* CREATO DISPLAY  */
+
+  @font-face {
+    font-family: 'Creato Display';
+    font-style: normal;
+    font-weight: 100;
+    font-display: swap;
+    src: url(/fonts/creato-display/CreatoDisplay-Regular.ttf) format(truetype);
+  }
+
+  @font-face {
+    font-family: 'Creato Display';
+    font-style: italic;
+    font-weight: 100;
+    font-display: swap;
+    src: url(/fonts/creato-display/CreatoDisplay-Italic.ttf) format(truetype);
+  }
+
+  @font-face {
+    font-family: 'Creato Display';
+    font-style: normal;
+    font-weight: 200;
+    font-display: swap;
+    src: url(/fonts/creato-display/CreatoDisplay-Regular.ttf) format(truetype);
+  }
+
+  @font-face {
+    font-family: 'Creato Display';
+    font-style: italic;
+    font-weight: 200;
+    font-display: swap;
+    src: url(/fonts/creato-display/CreatoDisplay-Italic.ttf) format(truetype);
+  }
+
+  @font-face {
+    font-family: 'Creato Display';
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url(/fonts/creato-display/CreatoDisplay-Regular.ttf) format(truetype);
+  }
+
+  @font-face {
+    font-family: 'Creato Display';
+    font-style: italic;
+    font-weight: 300;
+    font-display: swap;
+    src: url(/fonts/creato-display/CreatoDisplay-Italic.ttf) format(truetype);
+  }
+
+  @font-face {
+    font-family: 'Creato Display';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(/fonts/creato-display/CreatoDisplay-Regular.ttf) format(truetype);
+  }
+
+  @font-face {
+    font-family: 'Creato Display';
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url(/fonts/creato-display/CreatoDisplay-Italic.ttf) format(truetype);
+  }
+
+  @font-face {
+    font-family: 'Creato Display';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url(/fonts/creato-display/CreatoDisplay-Regular.ttf) format(truetype);
+  }
+
+  @font-face {
+    font-family: 'Creato Display';
+    font-style: italic;
+    font-weight: 500;
+    font-display: swap;
+    src: url(/fonts/creato-display/CreatoDisplay-Italic.ttf) format(truetype);
+  }
+
+  @font-face {
+    font-family: 'Creato Display';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url(/fonts/creato-display/CreatoDisplay-Regular.ttf) format(truetype);
+  }
+
+  @font-face {
+    font-family: 'Creato Display';
+    font-style: italic;
+    font-weight: 600;
+    font-display: swap;
+    src: url(/fonts/creato-display/CreatoDisplay-Italic.ttf) format(truetype);
+  }
+
+  @font-face {
+    font-family: 'Creato Display';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url(/fonts/creato-display/CreatoDisplay-Regular.ttf) format(truetype);
+  }
+
+  @font-face {
+    font-family: 'Creato Display';
+    font-style: italic;
+    font-weight: 700;
+    font-display: swap;
+    src: url(/fonts/creato-display/CreatoDisplay-Italic.ttf) format(truetype);
+  }
+}
+
+
