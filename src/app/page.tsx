@@ -1,9 +1,10 @@
-import Image from "next/image";
+import ParticlesBackground from "./components/ParticlesBackground";
 
 export default function Home() {
   return (
-   <main className="flex items-center justify-center bg-primary-1 min-h-svh">
-
-   </main>
+    <main className="relative flex items-center justify-center min-h-screen text-white">
+      <ParticlesBackground />
+      <h1 className="text-4xl z-10">Bem-vindo</h1>
+    </main>
   );
 }
