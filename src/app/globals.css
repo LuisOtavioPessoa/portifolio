@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+/* FONTES E CORES DO PROJETO */
 @theme inline {
 
   --font-altone: 'Altone Trial', sans-serif;
@@ -23,7 +24,6 @@
 .font-creato{
   font-family: var(--font-creato);
 }
-
 
 @layer base {
     /* FONT ALTONE TRIAL */
