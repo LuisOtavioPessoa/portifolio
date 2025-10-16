@@ -4,6 +4,7 @@ import LanguageSelector from "./components/LanguageSelector";
 import LogoGitHub from "./components/LogoGitHub";
 import LogoLinkedIn from "./components/LogoLinkedIn";
 import ParticlesBackground from "./components/ParticlesBackground";
+import SecaoSobre from "./components/SecaoSobre";
 import { IoLocationOutline } from "react-icons/io5";
 import { MdOutlineEmail } from "react-icons/md";
 import { FiPhone } from "react-icons/fi";
@@ -49,7 +50,7 @@ export default function Home() {
         <LanguageSelector/>
       </div>
       
-      <div id="inicio" className="grid grid-cols-2 w-full min-h-[auto] ">
+      <div id="inicio" className="grid grid-cols-2 w-full min-h-screen">
           <div className="bg-transparent">
               <div className="pt-30 pl-30">
                 <h1 className="text-white font-altone font-bold text-[58px]">Luís Otávio</h1>
@@ -90,8 +91,38 @@ export default function Home() {
               </div>
           </div>
       </div>
-      
 
+      <div id="sobre" className= "w-full min-h-screen bg-transparent flex flex-col items-center">
+        <h1 className=" text-white text-[40px] font-altone font-bold ">Sobre Mim</h1>
+        <div className="bg-primary-6 h-[5px] w-1/5 rounded-[5px] mt-3 "></div>
+
+        <div className="w-3/4 flex justify-start mt-20">
+        <SecaoSobre
+          titulo="Apresentação"
+          texto1="Sou um desenvolvedor focado em criar interfaces modernas, funcionais e responsivas."
+          texto2="Busco sempre aprender novas tecnologias e aprimorar a experiência do usuário."
+          height={90}
+        />
+        </div>
+
+        <SecaoSobre
+          titulo="Experiência profissional"
+          subtitulo="Desenvolvedor Front End"
+          subtitulo2="Fábrica de Software"
+          texto1="Atuei em projetos que envolveram desenvolvimento de interfaces, integração de APIs e boas práticas de código limpo."
+          texto2="Tenho experiência com React, TypeScript, Next.js e Tailwind CSS."
+          height={220}
+        />
+
+        <SecaoSobre
+          titulo="Formação"
+          subtitulo="Análise e Desenvolvimento de Sistemas"
+          subtitulo2="Centro Universitário UNIPÊ"
+          texto1="Minha formação..."
+          height={150}
+        />
+
+      </div>
     </main>
   );
 }
