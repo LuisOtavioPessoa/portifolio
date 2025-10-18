@@ -23,7 +23,7 @@ export default function SecaoSobre({
   return (
     <div className="w-3/4 flex flex-col items-start relative mb-8">
    
-      <p className="text-primary-6 font-chocolates font-bold text-[32px] mb-4">
+      <p className="text-primary-6 font-altone font-bold text-[32px] [text-shadow:0_0_9px_#3B76BB] mb-4">
         {titulo}
       </p>
 

@@ -8,6 +8,16 @@ import SecaoSobre from "./components/SecaoSobre";
 import { IoLocationOutline } from "react-icons/io5";
 import { MdOutlineEmail } from "react-icons/md";
 import { FiPhone } from "react-icons/fi";
+import CardTecnologias from "./components/CardTecnologias";
+import LogoHTML from "./components/LogoTecnologia/LogoHTML";
+import LogoTailwindCSS from "./components/LogoTecnologia/LogoTailwindCSS";
+import LogoJavaScript from "./components/LogoTecnologia/LogoJavaScript";
+import LogoReact from "./components/LogoTecnologia/LogoReact";
+import LogoNext from "./components/LogoTecnologia/LogoNext";
+import LogoTypescript from "./components/LogoTecnologia/LogoTypescript";
+import LogoNode from "./components/LogoTecnologia/LogoNode";
+import LogoExpress from "./components/LogoTecnologia/LogoExpress";
+import LogoSQL from "./components/LogoTecnologia/LogoSQL";
 
 export default function Home() {
 
@@ -54,7 +64,7 @@ export default function Home() {
           <div className="bg-transparent">
               <div className="pt-30 pl-30">
                 <h1 className="text-white font-altone font-bold text-[58px]">Luís Otávio</h1>
-                <p className="relative text-primary-6 font-chocolates text-[30px] font-semibold animate-fadePulse pr-4 after:content-[''] after:absolute after:right-65 after:top-6 after:-translate-y-6 after:w-[6px] after:h-[75%] after:bg-[#3B76BB]  ">Desenvolvedor Front End</p>
+                <p className="relative text-primary-6 font-chocolates text-[30px] font-semibold [text-shadow:0_0_6px_#5191DB]  pr-4 after:content-[''] after:absolute after:right-65 after:top-6 after:-translate-y-6 after:w-[6px] after:h-[75%] after:bg-[#3B76BB]  ">Desenvolvedor Front End</p>
                 <p className="text-white font-creato text-[22px] mt-2 max-w-[500px]">Desenvolvedor com foco em desenvolvimento 
                 de interfaces responsivas, versionamentos e 
                 boas práticas de código limpo.</p>
@@ -123,6 +133,86 @@ export default function Home() {
         />
 
       </div>
+
+      <div 
+        id="habilidades" 
+        className="w-full min-h-screen bg-transparent flex flex-col items-center pt-24 sm:pt-28 md:pt-32 lg:pt-32">
+        <h1 className=" text-white text-[40px] font-altone font-bold ">Habilidades</h1>
+        <div className="bg-primary-6 h-[5px] w-1/5 rounded-[5px] mt-3 "></div>
+
+        <div className="flex justify-center w-full mt-20">
+
+          <CardTecnologias
+            titulo="Front End"
+            tamanho="grande"
+            tecnologias= {[
+            { nome: "HTML", imagem: <LogoHTML/>, cor: "#E34C26CC", shadow: "shadow-[0_0_80px_0_#E34C26CC]"},
+            { nome: "Tailwind CSS", imagem: <LogoTailwindCSS/>, cor: "#00ACC1CC", shadow: "shadow-[0_0_80px_0_#4AA4EECC]"},
+            { nome: "Javascript", imagem: <LogoJavaScript/>, cor: "#FFE730CC", shadow: "shadow-[0_0_80px_0_#FFE730CC]"},
+            { nome: "React.js", imagem: <LogoReact/>, cor: "#5DE1EACC", shadow: "shadow-[0_0_80px_0_#5DE1EACC]"},
+            { nome: "Next.js", imagem: <LogoNext/>, cor: "#D9D9D9CC", shadow: "shadow-[0_0_80px_0_#D9D9D9CC]"},
+            { nome: "Typescript", imagem: <LogoTypescript/>, cor: "#5B51F3CC", shadow: "shadow-[0_0_80px_0_#5B51F3CC]"},
+            ]}
+          />
+
+        </div>
+
+        {/* TRÊS CARDS LADO A LADO */}
+        <div className="flex flex-wrap justify-center gap-6 mt-10 w-full ">
+            <CardTecnologias
+              titulo="Back End"
+              tamanho="medio"
+              tecnologias={[
+              { nome: "Node.js", imagem: <LogoNode/>, cor: "#5DE850CC", shadow: "shadow-[0_0_80px_0_#5DE850CC]"},
+              { nome: "Express", imagem: <LogoExpress/>, cor: "#8B8B8BCC", shadow: "shadow-[0_0_80px_0_#8B8B8B]"},
+              ]}
+            />
+
+            <CardTecnologias
+              titulo="Dados"
+              tamanho="pequeno"
+              tecnologias={[
+              { nome: "MySQL", imagem: <LogoSQL/>, cor: "#ED8F3CCC", shadow: "shadow-[0_0_80px_0_#ED8F3CCC]"},
+              ]}
+            />
+
+            <CardTecnologias
+              titulo="DevOps"
+              tamanho="pequeno"
+              tecnologias={[
+              { nome: "Git", imagem: <LogoHTML/>, cor: "#D34F38CC", shadow: "shadow-[0_0_80px_0_#ED8F3CCC]"},
+              ]}
+            />
+
+
+        </div>
+
+        {/* CARD GRANDE SOZINHO */}
+        <div className="flex justify-center w-full mt-10">
+          <CardTecnologias
+            titulo="Outros"
+            tamanho="grande"
+            tecnologias= {[
+            { nome: "RESTful APIs", imagem: <LogoHTML/>, cor: "#54B5F2CC", shadow: "shadow-[0_0_80px_0_#54B5F2CC]"},
+            { nome: "MVC", imagem: <LogoTailwindCSS/>, cor: "#D9D9D9CC", shadow: "shadow-[0_0_80px_0_#D9D9D9CC]"},
+            { nome: "Clean Code", imagem: <LogoJavaScript/>, cor: "#2CB525CC", shadow: "shadow-[0_0_80px_0_#2CB525CC]"},
+            { nome: "Scrum", imagem: <LogoReact/>, cor: "#976DF9CC", shadow: "shadow-[0_0_80px_0_#976DF9CC]"},
+    
+            ]}
+          />
+
+        </div>
+
+      </div>
+
+      <div 
+        id="projetos" 
+        className="w-full min-h-screen bg-transparent flex flex-col items-center pt-24 sm:pt-28 md:pt-32 lg:pt-">
+        <h1 className=" text-white text-[40px] font-altone font-bold ">Projetos</h1>
+        <div className="bg-primary-6 h-[5px] w-1/5 rounded-[5px] mt-3 "></div>
+
+      </div>
+
     </main>
   );
 }
