@@ -1,13 +1,16 @@
 "use client";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
 import { useState } from "react";
+import { IoLocationOutline } from "react-icons/io5";
+import { MdOutlineEmail } from "react-icons/md";
+import { FiPhone } from "react-icons/fi";
 import LanguageSelector from "./components/LanguageSelector";
 import LogoGitHub from "./components/LogoGitHub";
 import LogoLinkedIn from "./components/LogoLinkedIn";
 import ParticlesBackground from "./components/ParticlesBackground";
 import SecaoSobre from "./components/SecaoSobre";
-import { IoLocationOutline } from "react-icons/io5";
-import { MdOutlineEmail } from "react-icons/md";
-import { FiPhone } from "react-icons/fi";
 import CardTecnologias from "./components/CardTecnologias";
 import LogoHTML from "./components/LogoTecnologia/LogoHTML";
 import LogoTailwindCSS from "./components/LogoTecnologia/LogoTailwindCSS";
@@ -18,6 +21,10 @@ import LogoTypescript from "./components/LogoTecnologia/LogoTypescript";
 import LogoNode from "./components/LogoTecnologia/LogoNode";
 import LogoExpress from "./components/LogoTecnologia/LogoExpress";
 import LogoSQL from "./components/LogoTecnologia/LogoSQL";
+import CardProjetos from "./components/CardProjetos";
+import InputField from "./components/InputField";
+import TextAreaField from "./components/TextAreaField";
+
 
 export default function Home() {
 
@@ -31,6 +38,34 @@ export default function Home() {
     {id: "contatos", label: "Contatos"},
   ];
 
+  const schema = z.object({
+    nome: z
+      .string()
+      .min(1, {message: 'Preenchimento obrigatório'})
+      .regex(/^[A-Za-zÀ-ÿ\s]+$/, {message: "O nome não pode conter números"}),
+    email: z
+      .string()
+      .min(1, {message: "Preenchimento obrigatório"})
+      .email({message: "Digite um email válido"}),
+    mensagem: z
+      .string()
+      .min(1, {message: "Mensagem obrigatória"})
+  });
+
+  type FormData = z.infer<typeof schema>
+
+  const{
+      register,
+      handleSubmit,
+      formState: { errors },
+  } = useForm<FormData>({
+    resolver: zodResolver(schema),
+  });
+
+  const onSubmit = (data: FormData) => {
+    console.log("Dados Enviados:", data);
+  }
+  
   return (
     <main className="relative flex flex-col items-center-safe justify-center grow">
       <ParticlesBackground />
@@ -136,7 +171,7 @@ export default function Home() {
 
       <div 
         id="habilidades" 
-        className="w-full min-h-screen bg-transparent flex flex-col items-center pt-24 sm:pt-28 md:pt-32 lg:pt-32">
+        className="w-full min-h-screen bg-transparent flex flex-col items-center pt-24 sm:pt-28 md:pt-32 lg:pt-36">
         <h1 className=" text-white text-[40px] font-altone font-bold ">Habilidades</h1>
         <div className="bg-primary-6 h-[5px] w-1/5 rounded-[5px] mt-3 "></div>
 
@@ -187,7 +222,6 @@ export default function Home() {
 
         </div>
 
-        {/* CARD GRANDE SOZINHO */}
         <div className="flex justify-center w-full mt-10">
           <CardTecnologias
             titulo="Outros"
@@ -207,12 +241,91 @@ export default function Home() {
 
       <div 
         id="projetos" 
-        className="w-full min-h-screen bg-transparent flex flex-col items-center pt-24 sm:pt-28 md:pt-32 lg:pt-">
+        className="w-full min-h-screen bg-transparent flex flex-col items-center pt-24 sm:pt-28 md:pt-32 lg:pt-40">
         <h1 className=" text-white text-[40px] font-altone font-bold ">Projetos</h1>
         <div className="bg-primary-6 h-[5px] w-1/5 rounded-[5px] mt-3 "></div>
 
+        <div className="flex justify-center w-full mt-20 grid-cols-2 gap-20">
+          <CardProjetos
+             titulo="Plataforma F360"
+              descricao={[
+              "Aplicação web desenvolvida para estruturar e modernizar a gestão da Fábrica de Software da Unipê.",
+              "A solução oferece controle administrativo completo sobre alunos, projetos, workshops, palestras e imersões, substituindo processos manuais e descentralizados."]} 
+             imagem="/images/f360-projeto.png"
+             tecnologias={[
+              {nome: "React.js", cor: "#5DE1EA1F", borda: "border-[#5DE1EAE5]" },
+              {nome: "Typescript", cor: "#5B51F31A", borda: "border-[#5B51F3E5]" },
+              {nome: "Next.js", cor: "#D9D9D91A", borda: "border-[#D9D9D9E5]" },
+              {nome: "Tailwind CSS", cor: "#00ACC11A", borda: "border-[#00ACC1E5]" },
+             ]}
+             quantidadeTecnologia="2"
+          />
+         
+          <CardProjetos
+             titulo="API Pokemon TCG"
+             descricao={[
+              "Aplicação web que consome dados da API oficial do Pokémon TCG para exibir cartas, realizar buscas por nome ou tipo, e simular a abertura de pacotes com 6 cartas aleatórias.", 
+              "O projeto demonstra domínio em consumo de APIs RESTful, manipulação dinâmica de dados e criação de interfaces interativas com foco na experiência do usuário."]}
+             imagem="/images/pokemonapi-projeto.png"
+             tecnologias={[
+              {nome: "React.js", cor: "#5DE1EA1F", borda: "border-[#5DE1EAE5]" },
+              {nome: "Next.js", cor: "#D9D9D91A", borda: "border-[#D9D9D9E5]" },
+              {nome: "Javascript", cor: "#FFE7301A", borda: "border-[#FFE730E5]" },
+              {nome: "Typescript", cor: "#5B51F31A", borda: "border-[#5B51F3E5]" },
+              {nome: "TailwindCSS", cor: "#00ACC11A", borda: "border-[#00ACC1E5]" },
+              {nome: "API RESTful", cor: "#54B5F21A", borda: "border-[#54B5F2E5]" },
+             ]}
+             quantidadeTecnologia="4"
+          />
+
+        </div>
       </div>
 
+      <div 
+        id="contatos" 
+        className="w-full min-h-screen bg-transparent flex flex-col items-center pt-24 sm:pt-28 md:pt-32 lg:pt-40"
+      >
+        <h1 className=" text-white text-[40px] font-altone font-bold ">Entre em contato</h1>
+        <div className="bg-primary-6 h-[5px] w-1/5 rounded-[5px] mt-3 "></div>
+
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="flex flex-col gap-10 w-full max-w-[450px] pt-30"
+        >
+
+          <InputField
+          id="nome"
+          label="Nome"
+          register={register("nome")}
+          error= {errors.nome}
+          />
+
+          <InputField
+          id="email"
+          label="Email"
+          register={register("email")}
+          error= {errors.email}
+          />
+
+          <TextAreaField
+          id="mensagem"
+          label="Mensagem"
+          register={register("mensagem")}
+          error={errors.mensagem}
+        />
+        
+        <button
+          type="submit"
+          className="bg-primary-6 text-white text-[22px] font-chocolates rounded-[20px] border-[1px] border-[#2C2C2C] py-3  "
+        >
+          Enviar
+        </button>
+
+        </form>
+
+
+        
+      </div>
     </main>
   );
 }
