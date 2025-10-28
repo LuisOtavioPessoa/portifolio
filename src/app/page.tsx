@@ -6,6 +6,9 @@ import { useState } from "react";
 import { IoLocationOutline } from "react-icons/io5";
 import { MdOutlineEmail } from "react-icons/md";
 import { FiPhone } from "react-icons/fi";
+import { FiLinkedin } from "react-icons/fi";
+import { RiInstagramLine } from "react-icons/ri";
+import { LuGithub } from "react-icons/lu";
 import LanguageSelector from "./components/LanguageSelector";
 import LogoGitHub from "./components/LogoGitHub";
 import LogoLinkedIn from "./components/LogoLinkedIn";
@@ -290,7 +293,7 @@ export default function Home() {
 
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="flex flex-col gap-10 w-full max-w-[450px] pt-30"
+          className="flex flex-col gap-8 w-full max-w-[450px] pt-30"
         >
 
           <InputField
@@ -323,8 +326,14 @@ export default function Home() {
 
         </form>
 
+        <div className="w-full bg-transparent flex flex-row items-center justify-center pt-20 mb-10 gap-30">
+          <FiLinkedin className="text-white text-[34px]"/>
+          <RiInstagramLine  className="text-white text-[34px]"/>
+          <LuGithub className="text-white text-[34px]"/>
+        </div>
 
-        
+        <p className="text-white font-chocolates text-[18px] pt-10 mb-10">© 2025 Luís Otávio. Todos os direitos reservados.</p>
+
       </div>
     </main>
   );
