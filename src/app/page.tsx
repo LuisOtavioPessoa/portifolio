@@ -68,6 +68,26 @@ export default function Home() {
   const onSubmit = (data: FormData) => {
     console.log("Dados Enviados:", data);
   }
+
+    const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      let headerOffset = 80; 
+
+      if(id === "habilidades" || id === "projetos" || id === "contatos") {
+        const paddingCompensation = 80;
+        headerOffset = -paddingCompensation;
+      }
+
+      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+      const offsetPosition = elementPosition - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
+  };
   
   return (
     <main className="relative flex flex-col items-center-safe justify-center grow">
@@ -78,7 +98,10 @@ export default function Home() {
           {navBarItems.map((item) => (
           <p
             key={item.id}
-            onClick={() => setActive(item.id)}
+            onClick={() => {
+              setActive(item.id);
+              scrollToSection(item.id);
+            }}
             className={`relative cursor-pointer font-chocolates text-[20px] transition-all duration-500
               after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px]
               after:bg-[#3B76BB] after:transition-all after:duration-500
@@ -107,7 +130,7 @@ export default function Home() {
                 de interfaces responsivas, versionamentos e 
                 boas práticas de código limpo.</p>
 
-                <button className="text-white font-chocolates bg-primary-6 mt-12 rounded-[20px] px-6 py-4 hover:bg-primary-3 hover:font-bold hover:scale-110 transition-all duration-300 w-[150px] ">Ver Currículo</button>
+                <button className="text-white font-chocolates bg-primary-6 mt-12 rounded-[20px] px-6 py-4 hover:bg-primary-3 hover:font-bold hover:scale-110 transition-all duration-300 w-[150px] cursor-pointer">Ver Currículo</button>
 
                 <div className="flex flex-row mt-8 gap-6">
                   <LogoLinkedIn/>
@@ -174,7 +197,7 @@ export default function Home() {
 
       <div 
         id="habilidades" 
-        className="w-full min-h-screen bg-transparent flex flex-col items-center pt-24 sm:pt-28 md:pt-32 lg:pt-36">
+        className="w-full min-h-screen bg-transparent flex flex-col items-center pt-24 sm:pt-28 md:pt-32 lg:pt-40">
         <h1 className=" text-white text-[40px] font-altone font-bold ">Habilidades</h1>
         <div className="bg-primary-6 h-[5px] w-1/5 rounded-[5px] mt-3 "></div>
 
@@ -184,25 +207,24 @@ export default function Home() {
             titulo="Front End"
             tamanho="grande"
             tecnologias= {[
-            { nome: "HTML", imagem: <LogoHTML/>, cor: "#E34C26CC", shadow: "shadow-[0_0_80px_0_#E34C26CC]"},
-            { nome: "Tailwind CSS", imagem: <LogoTailwindCSS/>, cor: "#00ACC1CC", shadow: "shadow-[0_0_80px_0_#4AA4EECC]"},
-            { nome: "Javascript", imagem: <LogoJavaScript/>, cor: "#FFE730CC", shadow: "shadow-[0_0_80px_0_#FFE730CC]"},
-            { nome: "React.js", imagem: <LogoReact/>, cor: "#5DE1EACC", shadow: "shadow-[0_0_80px_0_#5DE1EACC]"},
-            { nome: "Next.js", imagem: <LogoNext/>, cor: "#D9D9D9CC", shadow: "shadow-[0_0_80px_0_#D9D9D9CC]"},
-            { nome: "Typescript", imagem: <LogoTypescript/>, cor: "#5B51F3CC", shadow: "shadow-[0_0_80px_0_#5B51F3CC]"},
+            { nome: "HTML", imagem: <LogoHTML/>, cor: "#E34C26CC", shadow: "hover:shadow-[0_0_80px_0_#E34C26CC]"},
+            { nome: "Tailwind CSS", imagem: <LogoTailwindCSS/>, cor: "#00ACC1CC", shadow: "hover:shadow-[0_0_80px_0_#4AA4EECC]"},
+            { nome: "Javascript", imagem: <LogoJavaScript/>, cor: "#FFE730CC", shadow: "hover:shadow-[0_0_80px_0_#FFE730CC]"},
+            { nome: "React.js", imagem: <LogoReact/>, cor: "#5DE1EACC", shadow: "hover:shadow-[0_0_80px_0_#5DE1EACC]"},
+            { nome: "Next.js", imagem: <LogoNext/>, cor: "#D9D9D9CC", shadow: "hover:shadow-[0_0_80px_0_#D9D9D9CC]"},
+            { nome: "Typescript", imagem: <LogoTypescript/>, cor: "#5B51F3CC", shadow: "hover:shadow-[0_0_80px_0_#5B51F3CC]"},
             ]}
           />
 
         </div>
 
-        {/* TRÊS CARDS LADO A LADO */}
         <div className="flex flex-wrap justify-center gap-6 mt-10 w-full ">
             <CardTecnologias
               titulo="Back End"
               tamanho="medio"
               tecnologias={[
-              { nome: "Node.js", imagem: <LogoNode/>, cor: "#5DE850CC", shadow: "shadow-[0_0_80px_0_#5DE850CC]"},
-              { nome: "Express", imagem: <LogoExpress/>, cor: "#8B8B8BCC", shadow: "shadow-[0_0_80px_0_#8B8B8B]"},
+              { nome: "Node.js", imagem: <LogoNode/>, cor: "#5DE850CC", shadow: "hover:shadow-[0_0_80px_0_#5DE850CC]"},
+              { nome: "Express", imagem: <LogoExpress/>, cor: "#8B8B8BCC", shadow: "hover:shadow-[0_0_80px_0_#8B8B8B]"},
               ]}
             />
 
@@ -210,7 +232,7 @@ export default function Home() {
               titulo="Dados"
               tamanho="pequeno"
               tecnologias={[
-              { nome: "MySQL", imagem: <LogoSQL/>, cor: "#ED8F3CCC", shadow: "shadow-[0_0_80px_0_#ED8F3CCC]"},
+              { nome: "MySQL", imagem: <LogoSQL/>, cor: "#ED8F3CCC", shadow: "hover:shadow-[0_0_80px_0_#ED8F3CCC]"},
               ]}
             />
 
@@ -218,7 +240,7 @@ export default function Home() {
               titulo="DevOps"
               tamanho="pequeno"
               tecnologias={[
-              { nome: "Git", imagem: <LogoHTML/>, cor: "#D34F38CC", shadow: "shadow-[0_0_80px_0_#ED8F3CCC]"},
+              { nome: "Git", imagem: <LogoHTML/>, cor: "#D34F38CC", shadow: "hover:shadow-[0_0_80px_0_#ED8F3CCC]"},
               ]}
             />
 
@@ -230,10 +252,10 @@ export default function Home() {
             titulo="Outros"
             tamanho="grande"
             tecnologias= {[
-            { nome: "RESTful APIs", imagem: <LogoHTML/>, cor: "#54B5F2CC", shadow: "shadow-[0_0_80px_0_#54B5F2CC]"},
-            { nome: "MVC", imagem: <LogoTailwindCSS/>, cor: "#D9D9D9CC", shadow: "shadow-[0_0_80px_0_#D9D9D9CC]"},
-            { nome: "Clean Code", imagem: <LogoJavaScript/>, cor: "#2CB525CC", shadow: "shadow-[0_0_80px_0_#2CB525CC]"},
-            { nome: "Scrum", imagem: <LogoReact/>, cor: "#976DF9CC", shadow: "shadow-[0_0_80px_0_#976DF9CC]"},
+            { nome: "RESTful APIs", imagem: <LogoHTML/>, cor: "#54B5F2CC", shadow: "hover:shadow-[0_0_80px_0_#54B5F2CC]"},
+            { nome: "MVC", imagem: <LogoTailwindCSS/>, cor: "#D9D9D9CC", shadow: "hover:shadow-[0_0_80px_0_#D9D9D9CC]"},
+            { nome: "Clean Code", imagem: <LogoJavaScript/>, cor: "#2CB525CC", shadow: "hover:shadow-[0_0_80px_0_#2CB525CC]"},
+            { nome: "Scrum", imagem: <LogoReact/>, cor: "#976DF9CC", shadow: "hover:shadow-[0_0_80px_0_#976DF9CC]"},
     
             ]}
           />
@@ -319,7 +341,7 @@ export default function Home() {
         
         <button
           type="submit"
-          className="bg-primary-6 text-white text-[22px] font-chocolates rounded-[20px] border-[1px] border-[#2C2C2C] py-3  "
+          className="bg-primary-6 text-white text-[20px] font-chocolates rounded-[20px] border-[1px] border-[#2C2C2C] py-3  hover:bg-primary-3 hover:font-bold hover:scale-110 transition-all duration-300 cursor-pointer"
         >
           Enviar
         </button>
@@ -327,9 +349,31 @@ export default function Home() {
         </form>
 
         <div className="w-full bg-transparent flex flex-row items-center justify-center pt-20 mb-10 gap-30">
-          <FiLinkedin className="text-white text-[34px]"/>
-          <RiInstagramLine  className="text-white text-[34px]"/>
-          <LuGithub className="text-white text-[34px]"/>
+
+          <a 
+            href="https://www.linkedin.com/in/lu%C3%ADsot%C3%A1viopessoa/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+          <FiLinkedin className="text-white text-[34px] hover:text-[#3B76BB] transition-colors duration-500"/>
+          </a>
+
+          <a 
+            href="https://www.instagram.com/luisotaviopessoa/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+          <RiInstagramLine className="text-white text-[34px] hover:text-[#3B76BB] transition-colors duration-500"/>
+          </a>
+
+          <a 
+            href="https://github.com/LuisOtavioPessoa"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+          <LuGithub className="text-white text-[34px] hover:text-[#3B76BB] transition-colors duration-500"/>
+          </a>
+
         </div>
 
         <p className="text-white font-chocolates text-[18px] pt-10 mb-10">© 2025 Luís Otávio. Todos os direitos reservados.</p>
