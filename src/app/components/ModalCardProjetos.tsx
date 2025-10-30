@@ -82,7 +82,7 @@ export default function ModalCardProjetos({
               {tecnologias.map((tec, index) => (
                 <p
                   key={index}
-                  className={`flex text-[16px] text-white items-center justify-center w-[100px] h-[40px] rounded-[30px] border-[2px] ${tec.borda}`}
+                  className={`flex text-[16px] text-white items-center justify-center w-[100px] h-[40px] rounded-[30px] border-[2px] ${tec.borda} `}
                   style={{ backgroundColor: tec.cor }}
                 >
                   {tec.nome}

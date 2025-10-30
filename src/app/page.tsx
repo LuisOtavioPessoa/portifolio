@@ -27,7 +27,16 @@ import LogoSQL from "./components/LogoTecnologia/LogoSQL";
 import CardProjetos from "./components/CardProjetos";
 import InputField from "./components/InputField";
 import TextAreaField from "./components/TextAreaField";
+import LogoRestfulAPI from "./components/LogoTecnologia/LogoRestfulAPI";
+import LogoMVC from "./components/LogoTecnologia/LogoMVC";
+import LogoCleanCode from "./components/LogoTecnologia/LogoCleanCode";
+import LogoScrum from "./components/LogoTecnologia/LogoScrum";
+import LogoGit from "./components/LogoTecnologia/LogoGit";
+import emailjs from "@emailjs/browser";
 
+//Publick Key = dLlWzRFRL-RwhP_2M
+//service_id = service_lgxbbhb
+// template = template_xati3c8
 
 export default function Home() {
 
@@ -50,6 +59,10 @@ export default function Home() {
       .string()
       .min(1, {message: "Preenchimento obrigatório"})
       .email({message: "Digite um email válido"}),
+    assunto: z
+      .string()
+      .min(1, {message: "Preenchimento obrigatório"})
+      .max(100, {message: "Máximo de caracteres"}),
     mensagem: z
       .string()
       .min(1, {message: "Mensagem obrigatória"})
@@ -65,9 +78,31 @@ export default function Home() {
     resolver: zodResolver(schema),
   });
 
-  const onSubmit = (data: FormData) => {
-    console.log("Dados Enviados:", data);
+const onSubmit = async (data: FormData) => {
+  try {
+    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!;
+    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!;
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!;
+
+    const res = await emailjs.send(
+      serviceId,
+      templateId,
+      {
+        from_name: data.nome,
+        from_email: data.email,
+        subject: data.assunto,
+        message: data.mensagem,
+      },
+      publicKey
+    );
+
+    console.log("Email enviado:", res.status, res.text);
+    alert("Mensagem enviada com sucesso!");
+  } catch (error) {
+    console.error("Erro ao enviar email:", error);
+    alert("Erro ao enviar mensagem. Tente novamente mais tarde.");
   }
+};
 
     const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -130,8 +165,14 @@ export default function Home() {
                 de interfaces responsivas, versionamentos e 
                 boas práticas de código limpo.</p>
 
+                <a 
+                  href="/curriculo"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                 <button className="text-white font-chocolates bg-primary-6 mt-12 rounded-[20px] px-6 py-4 hover:bg-primary-3 hover:font-bold hover:scale-110 transition-all duration-300 w-[150px] cursor-pointer">Ver Currículo</button>
-
+                </a>
+                
                 <div className="flex flex-row mt-8 gap-6">
                   <LogoLinkedIn/>
                   <LogoGitHub/>
@@ -140,27 +181,38 @@ export default function Home() {
           </div>
 
           <div className="pt-20 pl-30">
-              <div className="w-[350px] h-[320px] bg-primary-2
+ 
+            <div className="relative w-[350px] h-[320px] rounded-[15px] shadow-[4px_4px_4px_0_#3B76BB]">
+              
+              <div
+                className="absolute inset-0 bg-primary-2
                 [clip-path:polygon(120px_0%,100%_0%,100%_100%,0%_100%,0%_120px)]
-                flex flex-col items-start justify-start px-4 gap-4 rounded-[15px]">
-
+                flex flex-col items-start justify-start px-4 gap-4 rounded-[15px]"
+              >
                 <div className="flex items-center gap-2 mt-30">
-                  <IoLocationOutline className="text-[40px]  text-white"/>
-                  <p className="text-white text-[20px] font-chocolates m-2">João Pessoa, PB, Brasil</p>
-                </div>
-
-                 <div className="flex items-center gap-2">
-                  <MdOutlineEmail className="text-[40px]  text-white"/>
-                  <p className="text-white text-[20px] font-chocolates m-2 ">otaviopessoa999@gmail.com</p>
+                  <IoLocationOutline className="text-[40px] text-white" />
+                  <p className="text-white text-[20px] font-chocolates m-2">
+                    João Pessoa, PB, Brasil
+                  </p>
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <FiPhone className="text-[40px]  text-white"/>
-                  <p className="text-white text-[20px] font-chocolates m-2 ">(81) 99140-8370</p>
+                  <MdOutlineEmail className="text-[40px] text-white" />
+                  <p className="text-white text-[20px] font-chocolates m-2">
+                    otaviopessoa999@gmail.com
+                  </p>
                 </div>
-                
+
+                <div className="flex items-center gap-2">
+                  <FiPhone className="text-[40px] text-white" />
+                  <p className="text-white text-[20px] font-chocolates m-2">
+                    (81) 99140-8370
+                  </p>
+                </div>
               </div>
+            </div>
           </div>
+
       </div>
 
       <div id="sobre" className= "w-full min-h-screen bg-transparent flex flex-col items-center">
@@ -210,9 +262,9 @@ export default function Home() {
             { nome: "HTML", imagem: <LogoHTML/>, cor: "#E34C26CC", shadow: "hover:shadow-[0_0_80px_0_#E34C26CC]"},
             { nome: "Tailwind CSS", imagem: <LogoTailwindCSS/>, cor: "#00ACC1CC", shadow: "hover:shadow-[0_0_80px_0_#4AA4EECC]"},
             { nome: "Javascript", imagem: <LogoJavaScript/>, cor: "#FFE730CC", shadow: "hover:shadow-[0_0_80px_0_#FFE730CC]"},
+            { nome: "Typescript", imagem: <LogoTypescript/>, cor: "#5B51F3CC", shadow: "hover:shadow-[0_0_80px_0_#5B51F3CC]"},
             { nome: "React.js", imagem: <LogoReact/>, cor: "#5DE1EACC", shadow: "hover:shadow-[0_0_80px_0_#5DE1EACC]"},
             { nome: "Next.js", imagem: <LogoNext/>, cor: "#D9D9D9CC", shadow: "hover:shadow-[0_0_80px_0_#D9D9D9CC]"},
-            { nome: "Typescript", imagem: <LogoTypescript/>, cor: "#5B51F3CC", shadow: "hover:shadow-[0_0_80px_0_#5B51F3CC]"},
             ]}
           />
 
@@ -236,14 +288,6 @@ export default function Home() {
               ]}
             />
 
-            <CardTecnologias
-              titulo="DevOps"
-              tamanho="pequeno"
-              tecnologias={[
-              { nome: "Git", imagem: <LogoHTML/>, cor: "#D34F38CC", shadow: "hover:shadow-[0_0_80px_0_#ED8F3CCC]"},
-              ]}
-            />
-
 
         </div>
 
@@ -252,11 +296,11 @@ export default function Home() {
             titulo="Outros"
             tamanho="grande"
             tecnologias= {[
-            { nome: "RESTful APIs", imagem: <LogoHTML/>, cor: "#54B5F2CC", shadow: "hover:shadow-[0_0_80px_0_#54B5F2CC]"},
-            { nome: "MVC", imagem: <LogoTailwindCSS/>, cor: "#D9D9D9CC", shadow: "hover:shadow-[0_0_80px_0_#D9D9D9CC]"},
-            { nome: "Clean Code", imagem: <LogoJavaScript/>, cor: "#2CB525CC", shadow: "hover:shadow-[0_0_80px_0_#2CB525CC]"},
-            { nome: "Scrum", imagem: <LogoReact/>, cor: "#976DF9CC", shadow: "hover:shadow-[0_0_80px_0_#976DF9CC]"},
-    
+            { nome: "RESTful APIs", imagem: <LogoRestfulAPI/>, cor: "#54B5F2CC", shadow: "hover:shadow-[0_0_80px_0_#54B5F2CC]"},
+            { nome: "MVC", imagem: <LogoMVC/>, cor: "#D9D9D9CC", shadow: "hover:shadow-[0_0_80px_0_#D9D9D9CC]"},
+            { nome: "Clean Code", imagem: <LogoCleanCode/>, cor: "#2CB525CC", shadow: "hover:shadow-[0_0_80px_0_#2CB525CC]"},
+            { nome: "Scrum", imagem: <LogoScrum/>, cor: "#976DF9CC", shadow: "hover:shadow-[0_0_80px_0_#976DF9CC]"},
+            { nome: "Git", imagem: <LogoGit/>, cor: "#D34F38CC", shadow: "hover:shadow-[0_0_80px_0_#ED8F3CCC]"},    
             ]}
           />
 
@@ -278,10 +322,10 @@ export default function Home() {
               "A solução oferece controle administrativo completo sobre alunos, projetos, workshops, palestras e imersões, substituindo processos manuais e descentralizados."]} 
              imagem="/images/f360-projeto.png"
              tecnologias={[
-              {nome: "React.js", cor: "#5DE1EA1F", borda: "border-[#5DE1EAE5]" },
-              {nome: "Typescript", cor: "#5B51F31A", borda: "border-[#5B51F3E5]" },
-              {nome: "Next.js", cor: "#D9D9D91A", borda: "border-[#D9D9D9E5]" },
-              {nome: "Tailwind CSS", cor: "#00ACC11A", borda: "border-[#00ACC1E5]" },
+              {nome: "React.js", cor: "#5DE1EA1F", borda: "border-[#5DE1EAE5]"},
+              {nome: "Typescript", cor: "#5B51F31A", borda: "border-[#5B51F3E5]"},
+              {nome: "Next.js", cor: "#D9D9D91A", borda: "border-[#D9D9D9E5]"},
+              {nome: "Tailwind CSS", cor: "#00ACC11A", borda: "border-[#00ACC1E5]"},
              ]}
              quantidadeTecnologia="2"
           />
@@ -330,6 +374,13 @@ export default function Home() {
           label="Email"
           register={register("email")}
           error= {errors.email}
+          />
+
+          <InputField
+          id="assunto"
+          label="Assunto"
+          register={register("assunto")}
+          error= {errors.assunto}
           />
 
           <TextAreaField

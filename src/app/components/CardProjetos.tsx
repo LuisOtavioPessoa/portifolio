@@ -29,7 +29,7 @@ export default function CardProjetos({
     <>
       <div
         onClick={() => setIsModalOpen(true)}
-        className="bg-primary-2 shadow-[4px_4px_4px_0_#3B76BB] w-[380px] h-[640px] rounded-[40px] overflow-hidden flex flex-col items-center group cursor-pointer"
+        className="bg-[#272742B2] shadow-[4px_4px_4px_0_#3B76BB] w-[380px] h-[640px] rounded-[40px] overflow-hidden flex flex-col items-center group cursor-pointer hover:bg-[#27274266] hover:scale-105 transition-transform duration-300 ease-out"
       >
         <div className="relative w-[90%] h-[230px] overflow-hidden rounded-[20px] border-[2px] border-[#474747] mt-4">
           <img
